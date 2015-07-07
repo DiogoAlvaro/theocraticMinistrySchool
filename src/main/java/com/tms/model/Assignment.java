@@ -14,7 +14,7 @@ import com.tms.constants.AssignmentLocal;
 import com.tms.constants.AssignmentType;
 
 @Entity
-@Table(name="meeting")
+@Table(name="assignment")
 public class Assignment implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
