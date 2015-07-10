@@ -29,6 +29,7 @@ public class Programming implements Serializable {
 	private Meeting meetingSix;
 	private Meeting meetingSeven;
 	private Meeting meetingEight;
+	private Meeting meetingNine;
 	
 	@Id
 	@GeneratedValue
@@ -118,6 +119,15 @@ public class Programming implements Serializable {
 	}
 	public void setMeetingEight(Meeting meetingEight) {
 		this.meetingEight = meetingEight;
+	}
+	
+	@ManyToOne(optional=false)
+	@JoinColumn
+	public Meeting getMeetingNine() {
+		return meetingNine;
+	}
+	public void setMeetingNine(Meeting meetingNine) {
+		this.meetingNine = meetingNine;
 	}
 	
 	
