@@ -1,11 +1,150 @@
 <!DOCTYPE html>
-<html 	xmlns="http://www.w3.org/1999/xhtml"
-		xmlns:h="http://xmlns.jcp.org/jsf/html">
-	<h:head>
-		<meta charset="UTF-8">
-		<title>Insert title here</title>
-	</h:head>
-	<h:body>
-		
-	</h:body>
-</html>
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:define name="titlePage">Cadastro de Estudantes</ui:define>
+	<ui:define name="content">
+		<h1>Estudantes Matriculados na Escola</h1>
+		<br />
+		<h4>Cadastro de Novo Estudante</h4>
+		<p>Para cadastrar um novo estudante, preencha as informações do formulário abaixo.</p>
+		<br />
+		<h:form class="form-horizontal">
+			
+			<div class="form-group">
+				<h:outputLabel value="Nome:" class="col-lg-2 col-md-2 col-sm-4 col-xs-12 control-label" for="nameStudant" />
+				<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+					<h:inputText value="#{studantBean.name}" class="form-control" id="nameStudant" a:placeholder="Nome do Estudante" />
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<h:outputLabel value="Sexo:" class="col-lg-2 col-md-2 col-sm-4 col-xs-12 control-label" for="genreStudant" />
+				<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+					<h:selectOneRadio value="#{studantBean.genre}" id="genreStudant" styleClass="radioButtons">
+						<f:selectItems
+							value="#{studantBean.studantGenres}"
+							var="genre"
+							itemValue="#{genre}"
+							itemLabel="#{genre == 'MALE' ? 'Masculino' : 'Feminino'}" 
+						/>
+					</h:selectOneRadio>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<h:outputLabel value="Tipo" class="col-lg-2 col-md-2 col-sm-4 col-xs-12 control-label" for="nameStudant" />
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<h:selectOneMenu value="#{studantBean.type}" styleClass="form-control">
+						<f:selectItems 
+							value="#{studantBean.studantTypes}" 
+							var="type" 
+							itemValue="#{type}" 
+							itemLabel="#{studantBean.convertEnumStudantTypes(type)}" 
+						/>
+					</h:selectOneMenu>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<h:outputLabel value="Ativo:" class="col-lg-2 col-md-2 col-sm-4 col-xs-12 control-label" for="active" />
+				<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+					<h:selectOneRadio value="#{studantBean.active}" id="active" styleClass="radioButtons">
+						<f:selectItem itemValue="true" itemLabel="Ativo" />
+						<f:selectItem itemValue="false" itemLabel="Inativo" />
+					</h:selectOneRadio>
+				</div>
+			</div>
+			
+			<br />
+			
+			<div class="form-group">
+				<h:outputLabel value="Destaques da Leitura:" class="col-lg-2 col-md-2 col-sm-4 col-xs-12 control-label" for="highlights" />
+				<div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
+					<h:selectOneRadio value="#{studantBean.readingHighlights}" id="highlights" styleClass="radioButtons">
+						<f:selectItem itemValue="true" itemLabel="Sim" />
+						<f:selectItem itemValue="false" itemLabel="Não" />
+					</h:selectOneRadio>
+				</div>
+				
+				<h:outputLabel value="Última Participação:" class="col-lg-2 col-md-2 col-sm-4 col-xs-12 control-label" for="lastHighlights" />
+				<div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+					<h:inputText value="#{studantBean.lastHighlights}" class="form-control" id="lastHighlights" a:placeholder="99/99/999" />
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<h:outputLabel value="Número 1:" class="col-lg-2 col-md-2 col-sm-4 col-xs-12 control-label" for="numberOne" />
+				<div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
+					<h:selectOneRadio value="#{studantBean.numberOne}" id="numberOne" styleClass="radioButtons">
+						<f:selectItem itemValue="true" itemLabel="Sim" />
+						<f:selectItem itemValue="false" itemLabel="Não" />
+					</h:selectOneRadio>
+				</div>
+				
+				<h:outputLabel value="Última Participação:" class="col-lg-2 col-md-2 col-sm-4 col-xs-12 control-label" for="lastNumberOne" />
+				<div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+					<h:inputText value="#{studantBean.lastNumberOne}" class="form-control" id="lastNumberOne" a:placeholder="99/99/999" />
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<h:outputLabel value="Número 2:" class="col-lg-2 col-md-2 col-sm-4 col-xs-12 control-label" for="numberTwo" />
+				<div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
+					<h:selectOneRadio value="#{studantBean.numberTwo}" id="numberTwo" styleClass="radioButtons">
+						<f:selectItem itemValue="true" itemLabel="Sim" />
+						<f:selectItem itemValue="false" itemLabel="Não" />
+					</h:selectOneRadio>
+				</div>
+				
+				<h:outputLabel value="Última Participação:" class="col-lg-2 col-md-2 col-sm-4 col-xs-12 control-label" for="lastNumberTwo" />
+				<div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+					<h:inputText value="#{studantBean.lastNumberTwo}" class="form-control" id="lastNumberTwo" a:placeholder="99/99/999" />
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<h:outputLabel value="Número 3:" class="col-lg-2 col-md-2 col-sm-4 col-xs-12 control-label" for="numberThree" />
+				<div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
+					<h:selectOneRadio value="#{studantBean.numberThree}" id="numberThree" styleClass="radioButtons">
+						<f:selectItem itemValue="true" itemLabel="Sim" />
+						<f:selectItem itemValue="false" itemLabel="Não" />
+					</h:selectOneRadio>
+				</div>
+				
+				<h:outputLabel value="Última Participação:" class="col-lg-2 col-md-2 col-sm-4 col-xs-12 control-label" for="lastNumberThree" />
+				<div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+					<h:inputText value="#{studantBean.lastNumberThree}" class="form-control" id="lastNumberThree" a:placeholder="99/99/999" />
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<h:outputLabel value="Ajudante:" class="col-lg-2 col-md-2 col-sm-4 col-xs-12 control-label" for="helper" />
+				<div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
+					<h:selectOneRadio value="#{studantBean.helper}" id="helper" styleClass="radioButtons">
+						<f:selectItem itemValue="true" itemLabel="Sim" />
+						<f:selectItem itemValue="false" itemLabel="Não" />
+					</h:selectOneRadio>
+				</div>
+				
+				<h:outputLabel value="Última Participação:" class="col-lg-2 col-md-2 col-sm-4 col-xs-12 control-label" for="lastHelper" />
+				<div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+					<h:inputText value="#{studantBean.lastHelper}" class="form-control" id="lastHelper" a:placeholder="99/99/999" />
+				</div>
+			</div>			
+			
+			<br />
+			
+			<div class="form-group">
+				<label class="col-lg-2 col-md-2 col-sm-4 col-xs-12 control-label"></label>
+				<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+					<button type="submit" class="btn btn-primary">Cadastrar Novo</button>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>

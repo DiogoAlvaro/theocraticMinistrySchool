@@ -1,0 +1,31 @@
+@CHARSET "UTF-8";
+
+/* General Definitions */
+body{background-color: #EEEEEE;}
+.radioButtons td{padding-right: 15px; padding-top: 7px;}
+.radioButtons td input{margin-right: 5px;}
+.radioButtons td label{font-weight: normal; }
+
+
+/* Header */
+header{min-height: 100px; background-color: #004C66;}
+header .logotipo {margin-top: 12px; margin-left: 5px; float:left; margin-right: 20px;}
+header .systemName{font-size: 22px; color: #FFFFFF; float:left; font-weight: bold; margin-top: 12px;}
+header .systemName .small{font-size: 18px; font-weight: normal;}
+
+/* Navigation */
+.mainNav{background-color: #FFFFFF; -webkit-box-shadow: 0px 5px 10px 0px rgba(50, 50, 50, 0.4); -moz-box-shadow: 0px 5px 10px 0px rgba(50, 50, 50, 0.4); box-shadow: 0px 5px 10px 0px rgba(50, 50, 50, 0.4);}
+.mainNav ul{padding-left: 0; margin-bottom: 0;}
+.mainNav .container > ul li:FIRST-CHILD{border-left: 1px solid #DDD;}
+.mainNav .container > ul > li{list-style: none; display: inline-block; padding: 0 15px; line-height: 45px; border-right: 1px solid #DDD;}
+.mainNav .container > ul > li > a{font-size: 16px; color: #666;}
+
+/* Stage */
+.stage{background-color: #FFF; min-height: 400px; padding: 20px; margin: 20px 0; -webkit-box-shadow: 0px 4px 30px 0px rgba(50, 50, 50, 0.4); -moz-box-shadow: 0px 4px 30px 0px rgba(50, 50, 50, 0.4); box-shadow: 0px 4px 30px 0px rgba(50, 50, 50, 0.4);}
+
+
+/* footer */
+footer{margin-bottom:20px;}
+
+
+

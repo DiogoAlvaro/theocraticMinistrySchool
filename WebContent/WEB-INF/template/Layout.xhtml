@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://xmlns.jcp.org/jsf/core"
+		xmlns:h="http://xmlns.jcp.org/jsf/html"
+		xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+		
+	<h:head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title><ui:insert name="titlePage">Gerenciador da Escola do Ministério Teocrático</ui:insert></title>
+		<link type="text/css" rel="stylesheet" href="resources/css/bootstrap.css" />
+		<link type="text/css" rel="stylesheet" href="resources/css/main.css" />
+	</h:head>
+	
+	<h:body>
+		<header>
+			<div class="container">
+				<img class="logotipo" alt="Logotipo Escola do Ministério Teocrático" src="resources/images/tms-logotipo.png" />
+				<span class="systemName">
+					<span class="small">Gerenciador da</span><br/>
+					<span>Escola do Ministério Teocrático</span>
+				</span>
+			</div>
+		</header>
+		<nav class="mainNav">
+			<div class="container">
+				<ul class="navbar-nav">
+					<li><a href="#">Home</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Estudantes <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="registration-of-students.xhtml">Cadastro de Estudantes</a></li>
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else here</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">Separated link</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">One more separated link</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Programação</a></li>
+					<li><a href="#">Sobre o Sistema</a></li>
+				</ul>
+			</div>
+		</nav>
+		<section class="container">
+			<div class="stage" id="contentPage">
+				<ui:insert name="content" />
+			</div>
+		</section>
+
+		<footer>
+			<div class="container text-center">
+				<small>Gerenciador da Escola do Ministério Teocrático © 2015</small>
+			</div>	
+		</footer>
+		<script type="text/javascript" src="resources/js/jquery-1.10.1.js"></script>
+		<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+	</h:body>
+</html>
