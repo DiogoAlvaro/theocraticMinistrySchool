@@ -1,11 +1,16 @@
 package com.tms.controllers;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.persistence.EntityManager;
 
 import com.tms.constants.StudantGenre;
 import com.tms.constants.StudantType;
+import com.tms.model.Studant;
+import com.tms.repository.Studants;
+import com.tms.util.JPAUtil;
 
 @ManagedBean
 public class StudantBean {
@@ -24,6 +29,7 @@ public class StudantBean {
 	private Date lastNumberThree;
 	private boolean helper;
 	private Date lastHelper;
+	private List<Studant> studantsList;
 	
 	public Long getId() {
 		return id;
@@ -115,6 +121,12 @@ public class StudantBean {
 	public void setLastHelper(Date lastHelper) {
 		this.lastHelper = lastHelper;
 	}
+	public List<Studant> getStudantsList() {
+		return studantsList;
+	}
+	public void setStudantsList(List<Studant> studantsList) {
+		this.studantsList = studantsList;
+	}
 	
 	
 	// Methods
@@ -140,8 +152,35 @@ public class StudantBean {
 			default:
 				break;
 		}
-		
 		return null;
 	}
 	
+
+	public void addStudant(){
+		Studant studant = new Studant();
+		studant.setName(this.getName());
+		studant.setGenre(this.getGenre());
+		studant.setType(this.getType());
+		studant.setActive(this.isActive());
+		studant.setReadingHighlights(this.isReadingHighlights());
+		studant.setLastHighlights(this.getLastHighlights());
+		studant.setNumberOne(this.isNumberOne());
+		studant.setLastNumberOne(this.getLastNumberOne());
+		studant.setNumberTwo(this.isNumberTwo());
+		studant.setLastNumberTwo(this.getLastNumberTwo());
+		studant.setNumberThree(this.isNumberThree());
+		studant.setLastNumberThree(this.getLastNumberThree());
+		studant.setHelper(this.isHelper());
+		studant.setLastHelper(this.getLastHelper());
+		
+		EntityManager manager = JPAUtil.getEntityManager();
+		Studants studants = new Studants(manager);
+		studants.insertStudant(studant);
+	}
+	
+	public void getAllStudants(){
+		EntityManager manager = JPAUtil.getEntityManager();
+		Studants studants = new Studants(manager);
+		this.setStudantsList(studants.getAll());
+	}
 }
