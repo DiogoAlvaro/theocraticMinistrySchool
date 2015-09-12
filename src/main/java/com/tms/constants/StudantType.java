@@ -1,5 +1,18 @@
 package com.tms.constants;
 
 public enum StudantType {
-	PUBLISHER, MINISTERIAL_SERVANT, ELDER
+	PUBLISHER("Publicador"), 
+	MINISTERIAL_SERVANT("Servo Ministerial"),
+	ELDER("Ancião");
+	
+	private String description;
+
+	private StudantType(String description) {
+		this.description = description;
+	}
+
+	public String getdescription() {
+		return description;
+	}
+	
 }

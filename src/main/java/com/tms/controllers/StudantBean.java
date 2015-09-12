@@ -1,19 +1,23 @@
 package com.tms.controllers;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
-import javax.persistence.EntityManager;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import com.tms.constants.StudantGenre;
 import com.tms.constants.StudantType;
 import com.tms.model.Studant;
 import com.tms.repository.Studants;
-import com.tms.util.JPAUtil;
+import com.tms.service.RegistrationStudantsService;
 
-@ManagedBean
-public class StudantBean {
+@Named
+@javax.faces.view.ViewScoped
+public class StudantBean implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private Long id;
 	private String name;
 	private StudantGenre genre;
@@ -29,7 +33,20 @@ public class StudantBean {
 	private Date lastNumberThree;
 	private boolean helper;
 	private Date lastHelper;
-	private List<Studant> studantsList;
+	private List<Studant> studantsList = new ArrayList<>();
+	private Studant studant;
+	
+	@Inject
+	private Studants studants;
+	
+	@Inject
+	private RegistrationStudantsService registrationStudant;
+	
+		
+	//Constructor
+	public StudantBean() {
+
+	}
 	
 	public Long getId() {
 		return id;
@@ -128,6 +145,12 @@ public class StudantBean {
 		this.studantsList = studantsList;
 	}
 	
+	public Studant getStudant() {
+		return studant;
+	}
+	public void setStudant(Studant studant) {
+		this.studant = studant;
+	}
 	
 	// Methods
 	public StudantGenre[] getStudantGenres() {
@@ -138,25 +161,7 @@ public class StudantBean {
 		return StudantType.values();
 	}
 	
-	public String convertEnumStudantTypes(StudantType type){
-		switch (type.toString()) {
-			case "PUBLISHER":
-				return "Publicador";
-			
-			case "MINISTERIAL_SERVANT":
-				return "Servo Ministerial";
-			
-			case "ELDER":
-				return "Ancião";
-			
-			default:
-				break;
-		}
-		return null;
-	}
-	
-
-	public void addStudant(){
+	public String addStudant(){
 		Studant studant = new Studant();
 		studant.setName(this.getName());
 		studant.setGenre(this.getGenre());
@@ -173,14 +178,34 @@ public class StudantBean {
 		studant.setHelper(this.isHelper());
 		studant.setLastHelper(this.getLastHelper());
 		
+		registrationStudant.salvar(studant);
+		return "registration-of-students";
+		
+		
+		/*
 		EntityManager manager = JPAUtil.getEntityManager();
 		Studants studants = new Studants(manager);
 		studants.insertStudant(studant);
+		this.studant = new Studant();
+		*/
+		
+		
 	}
 	
 	public void getAllStudants(){
+		
+		this.studantsList = studants.todos();
+		
+		/*
 		EntityManager manager = JPAUtil.getEntityManager();
 		Studants studants = new Studants(manager);
-		this.setStudantsList(studants.getAll());
+		this.studantsList = studants.getAll();
+		*/
+		
+	}
+	
+	public String editar(){
+		//studant = ((Studant) studantsList).getRowData();
+		return null;
 	}
 }

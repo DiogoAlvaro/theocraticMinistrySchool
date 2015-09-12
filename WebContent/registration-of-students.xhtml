@@ -9,7 +9,7 @@
 	<ui:define name="titlePage">Cadastro de Estudantes</ui:define>
 	<ui:define name="content">
 		<f:metadata>
-			<f:viewAction action="#{studantBean.getAllStudants}"></f:viewAction>
+			<f:viewAction action="#{studantBean.getAllStudants}" onPostback="true" />
 		</f:metadata>
 		<h2><h:messages style="color:red" /></h2>
 		<h1>Estudantes Matriculados na Escola</h1>
@@ -34,7 +34,7 @@
 							value="#{studantBean.studantGenres}"
 							var="genre"
 							itemValue="#{genre}"
-							itemLabel="#{genre == 'MALE' ? 'Masculino' : 'Feminino'}" 
+							itemLabel="#{genre.description}" 
 						/>
 					</h:selectOneRadio>
 				</div>
@@ -48,7 +48,7 @@
 							value="#{studantBean.studantTypes}" 
 							var="type" 
 							itemValue="#{type}" 
-							itemLabel="#{studantBean.convertEnumStudantTypes(type)}" 
+							itemLabel="#{type.description}" 
 						/>
 					</h:selectOneMenu>
 				</div>
@@ -156,7 +156,7 @@
 			<div class="form-group">
 				<label class="col-lg-2 col-md-2 col-sm-4 col-xs-12 control-label"></label>
 				<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-					  <h:commandButton value="Submit" action="#{studantBean.addStudant}" />
+					  <h:commandButton value="Submit" action="#{studantBean.addStudant}" update="studantsList" />
 				</div>
 			</div>
 		</h:form>
@@ -164,12 +164,54 @@
 		<h3>Estudantes Cadastrados na Escola</h3>
 		
 		<h:form id="studantsList">
-			<h:dataTable value="#{studantBean.studantsList}" var="studant">
+			<h:dataTable value="#{studantBean.studantsList}" var="studant" styleClass="table table-striped table-bordered table-hover">
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Nome" />
 					</f:facet>
 					<h:outputText value="#{studant.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Tipo" />
+					</f:facet>
+					<h:outputText value="#{studant.type}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Ativo?" />
+					</f:facet>
+					<h:outputText value="#{studant.active}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Destaques" />
+					</f:facet>
+					<h:outputText value="#{studant.readingHighlights}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Número 1" />
+					</f:facet>
+					<h:outputText value="#{studant.numberOne}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Número 2" />
+					</f:facet>
+					<h:outputText value="#{studant.numberTwo}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Número 3" />
+					</f:facet>
+					<h:outputText value="#{studant.numberThree}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Ações" />
+					</f:facet>
+					<h:commandLink value="Editar" />
 				</h:column>
 			</h:dataTable>
 		</h:form>
