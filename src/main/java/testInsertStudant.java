@@ -64,8 +64,5 @@ public class testInsertStudant {
 		} finally {
 			emf.close();
 		}
-		
-		
 	}
-
 }

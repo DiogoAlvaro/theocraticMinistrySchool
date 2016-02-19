@@ -27,16 +27,12 @@ public class Studant implements Serializable {
 	private StudantGenre genre;
 	private StudantType type;	
 	private boolean active;
-	private boolean readingHighlights;
-	private Date lastHighlights;
-	private boolean numberOne;
-	private Date lastNumberOne;
-	private boolean numberTwo;
-	private Date lastNumberTwo;
-	private boolean numberThree;
-	private Date lastNumberThree;
-	private boolean helper;
-	private Date lastHelper;
+	private boolean dicourse;
+	private boolean findSpiritualJewels;
+	private boolean bibleReading;
+	private boolean firstVisit;
+	private boolean revisit;
+	private boolean bibleStudy;
 	
 	@Id
 	@GeneratedValue
@@ -55,6 +51,7 @@ public class Studant implements Serializable {
 		this.name = name;
 	}
 	
+	@Enumerated(EnumType.STRING)
 	@Column(nullable=false)
 	public StudantGenre getGenre() {
 		return genre;
@@ -81,90 +78,53 @@ public class Studant implements Serializable {
 	}
 	
 	@Column(nullable=false)
-	public boolean getReadingHighlights() {
-		return readingHighlights;
+	public boolean isDicourse() {
+		return dicourse;
 	}
-	public void setReadingHighlights(boolean readingHighlights) {
-		this.readingHighlights = readingHighlights;
-	}
-
-	@Temporal(TemporalType.DATE)
-	@Column
-	public Date getLastHighlights() {
-		return lastHighlights;
-	}
-	public void setLastHighlights(Date lastHighlights) {
-		this.lastHighlights = lastHighlights;
+	public void setDicourse(boolean dicourse) {
+		this.dicourse = dicourse;
 	}
 	
 	@Column(nullable=false)
-	public boolean getNumberOne() {
-		return numberOne;
+	public boolean isFindSpiritualJewels() {
+		return findSpiritualJewels;
 	}
-	public void setNumberOne(boolean numberOne) {
-		this.numberOne = numberOne;
-	}
-	
-	@Temporal(TemporalType.DATE)
-	@Column
-	public Date getLastNumberOne() {
-		return lastNumberOne;
-	}
-	public void setLastNumberOne(Date lastNumberOne) {
-		this.lastNumberOne = lastNumberOne;
+	public void setFindSpiritualJewels(boolean findSpiritualJewels) {
+		this.findSpiritualJewels = findSpiritualJewels;
 	}
 	
 	@Column(nullable=false)
-	public boolean getNumberTwo() {
-		return numberTwo;
+	public boolean isBibleReading() {
+		return bibleReading;
 	}
-	public void setNumberTwo(boolean numberTwo) {
-		this.numberTwo = numberTwo;
-	}
-	
-	@Temporal(TemporalType.DATE)
-	@Column
-	public Date getLastNumberTwo() {
-		return lastNumberTwo;
-	}
-	public void setLastNumberTwo(Date lastNumberTwo) {
-		this.lastNumberTwo = lastNumberTwo;
+	public void setBibleReading(boolean bibleReading) {
+		this.bibleReading = bibleReading;
 	}
 	
 	@Column(nullable=false)
-	public boolean getNumberThree() {
-		return numberThree;
+	public boolean isFirstVisit() {
+		return firstVisit;
 	}
-	public void setNumberThree(boolean numberThree) {
-		this.numberThree = numberThree;
-	}
-	
-	@Temporal(TemporalType.DATE)
-	@Column
-	public Date getLastNumberThree() {
-		return lastNumberThree;
-	}
-	public void setLastNumberThree(Date lastNumberThree) {
-		this.lastNumberThree = lastNumberThree;
+	public void setFirstVisit(boolean firstVisit) {
+		this.firstVisit = firstVisit;
 	}
 	
 	@Column(nullable=false)
-	public boolean getHelper() {
-		return helper;
+	public boolean isRevisit() {
+		return revisit;
 	}
-	public void setHelper(boolean helper) {
-		this.helper = helper;
+	public void setRevisit(boolean revisit) {
+		this.revisit = revisit;
 	}
 	
-	@Temporal(TemporalType.DATE)
-	@Column
-	public Date getLastHelper() {
-		return lastHelper;
+	@Column(nullable=false)
+	public boolean isBibleStudy() {
+		return bibleStudy;
 	}
-	public void setLastHelper(Date lastHelper) {
-		this.lastHelper = lastHelper;
+	public void setBibleStudy(boolean bibleStudy) {
+		this.bibleStudy = bibleStudy;
 	}
-
+	
 	
 	@Override
 	public int hashCode() {

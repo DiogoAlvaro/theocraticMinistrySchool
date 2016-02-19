@@ -23,8 +23,6 @@ public class Assignment implements Serializable {
 	private Studant studant;
 	private Studant helper;
 	private String sourceMatters;
-	private String theme;
-	private short Scene;
 	private AssignmentLocal local;
 	private short StudyNumber;
 	
@@ -69,22 +67,6 @@ public class Assignment implements Serializable {
 	}
 	public void setSourceMatters(String sourceMatters) {
 		this.sourceMatters = sourceMatters;
-	}
-	
-	@JoinColumn(nullable=false)	
-	public String getTheme() {
-		return theme;
-	}
-	public void setTheme(String theme) {
-		this.theme = theme;
-	}
-	
-	@JoinColumn(nullable=false)	
-	public short getScene() {
-		return Scene;
-	}
-	public void setScene(short scene) {
-		Scene = scene;
 	}
 	
 	@JoinColumn(nullable=false)	

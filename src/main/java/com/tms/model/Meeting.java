@@ -21,12 +21,13 @@ public class Meeting implements Serializable {
 	
 	private Long id;
 	private Date date;
-	private Studant bibleReading;
-	private Studant numberOne;
-	private Studant numberTwo;
-	private Studant helperNumberTwo;
-	private Studant numberThree;
-	private Studant helperNumberThree;
+	private Assignment discourse;
+	private Assignment findSpiritualJewels;
+	private Assignment bibleReading;
+	private Assignment firstVisit;
+	private Assignment revisit;
+	private Assignment bibleStudy;
+	
 	
 	@Id
 	@GeneratedValue
@@ -46,61 +47,52 @@ public class Meeting implements Serializable {
 		this.date = date;
 	}
 	
-	@ManyToOne(optional=false)
-	@JoinColumn
-	public Studant getBibleReading() {
+
+	public Assignment getDiscourse() {
+		return discourse;
+	}
+	public void setDiscourse(Assignment discourse) {
+		this.discourse = discourse;
+	}
+	
+	
+	public Assignment getFindSpiritualJewels() {
+		return findSpiritualJewels;
+	}
+	public void setFindSpiritualJewels(Assignment findSpiritualJewels) {
+		this.findSpiritualJewels = findSpiritualJewels;
+	}
+	
+	
+	public Assignment getBibleReading() {
 		return bibleReading;
 	}
-	public void setBibleReading(Studant bibleReading) {
+	public void setBibleReading(Assignment bibleReading) {
 		this.bibleReading = bibleReading;
 	}
 	
-	@ManyToOne(optional=false)
-	@JoinColumn
-	public Studant getNumberOne() {
-		return numberOne;
-	}
-	public void setNumberOne(Studant numberOne) {
-		this.numberOne = numberOne;
-	}
 	
-	@ManyToOne(optional=false)
-	@JoinColumn
-	public Studant getNumberTwo() {
-		return numberTwo;
+	public Assignment getFirstVisit() {
+		return firstVisit;
 	}
-	public void setNumberTwo(Studant numberTwo) {
-		this.numberTwo = numberTwo;
-	}
-	
-	@ManyToOne(optional=true)
-	@JoinColumn
-	public Studant getHelperNumberTwo() {
-		return helperNumberTwo;
-	}
-	public void setHelperNumberTwo(Studant helperNumberTwo) {
-		this.helperNumberTwo = helperNumberTwo;
-	}
-	
-	@ManyToOne(optional=false)
-	@JoinColumn
-	public Studant getNumberThree() {
-		return numberThree;
-	}
-	public void setNumberThree(Studant numberThree) {
-		this.numberThree = numberThree;
-	}
-	
-	@ManyToOne(optional=false)
-	@JoinColumn
-	public Studant getHelperNumberThree() {
-		return helperNumberThree;
-	}
-	public void setHelperNumberThree(Studant helperNumberThree) {
-		this.helperNumberThree = helperNumberThree;
+	public void setFirstVisit(Assignment firstVisit) {
+		this.firstVisit = firstVisit;
 	}
 	
 	
+	public Assignment getRevisit() {
+		return revisit;
+	}
+	public void setRevisit(Assignment revisit) {
+		this.revisit = revisit;
+	}
+	
+	public Assignment getBibleStudy() {
+		return bibleStudy;
+	}
+	public void setBibleStudy(Assignment bibleStudy) {
+		this.bibleStudy = bibleStudy;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
